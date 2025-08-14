@@ -275,11 +275,22 @@ export default function Index() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2 space-y-6">
             <ProductivityChart data={performanceData} />
-            <DataTable
-              title="Recent Attendance Records"
-              data={attendanceData}
-              columns={attendanceColumns}
-            />
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg font-semibold">Worker Attendance Calendars</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                  {Array.from(new Set(attendanceData.map(r => r.workerName))).map(workerName => (
+                    <WorkerCalendar
+                      key={workerName}
+                      workerName={workerName}
+                      attendanceRecords={attendanceData}
+                    />
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
           </div>
           
           <div className="space-y-6">
