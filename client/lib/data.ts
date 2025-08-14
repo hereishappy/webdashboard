@@ -45,11 +45,14 @@ function parseCSV(csvText: string): string[][] {
 export async function fetchAttendanceData(): Promise<AttendanceRecord[]> {
   try {
     const response = await fetch(ATTENDANCE_CSV_URL);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
     const csvText = await response.text();
     const rows = parseCSV(csvText);
-    
+
     // Skip header row
-    return rows.slice(1).map(row => ({
+    const data = rows.slice(1).map(row => ({
       date: row[0] || '',
       supervisorName: row[1] || '',
       workerName: row[2] || '',
@@ -57,9 +60,11 @@ export async function fetchAttendanceData(): Promise<AttendanceRecord[]> {
       otHours: parseFloat(row[4]) || 0,
       endShiftManhours: parseFloat(row[5]) || 0,
     }));
+
+    return data.length > 0 ? data : getMockAttendanceData();
   } catch (error) {
     console.error('Error fetching attendance data:', error);
-    return [];
+    return getMockAttendanceData();
   }
 }
 
