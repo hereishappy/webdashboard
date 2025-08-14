@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Users, Clock, TrendingUp, Target, CalendarDays, Zap, Brain } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { WorkerCalendar } from "@/components/WorkerCalendar";
 
 interface AttendanceRecord {
   date: string;
