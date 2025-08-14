@@ -23,6 +23,13 @@ export default {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
         },
+        chart: {
+          '1': "hsl(var(--chart-1))",
+          '2': "hsl(var(--chart-2))",
+          '3': "hsl(var(--chart-3))",
+          '4': "hsl(var(--chart-4))",
+          '5': "hsl(var(--chart-5))",
+        },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
@@ -58,6 +65,9 @@ export default {
           ring: "hsl(var(--sidebar-ring))",
         },
       },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -84,6 +94,8 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-in": "fade-in 0.3s ease-out",
+        "slide-up": "slide-up 0.3s ease-out",
       },
     },
   },
