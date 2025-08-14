@@ -361,12 +361,12 @@ export default function Index() {
                   </div>
                 </div>
                 <div>
-                  <div className="text-muted-foreground">OT Hours</div>
-                  <div className="font-semibold text-lg">{totalOTHours}h</div>
+                  <div className="text-muted-foreground">Total Manhours</div>
+                  <div className="font-semibold text-lg">{totalManhours}h</div>
                 </div>
                 <div>
-                  <div className="text-muted-foreground">Efficiency</div>
-                  <div className="font-semibold text-lg">{(totalManhours / Math.max(totalWorkers, 1)).toFixed(1)}h</div>
+                  <div className="text-muted-foreground">Productivity</div>
+                  <div className="font-semibold text-lg">{avgProductivity.toFixed(1)}</div>
                 </div>
               </div>
             </div>
