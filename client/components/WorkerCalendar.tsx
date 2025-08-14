@@ -88,59 +88,60 @@ export function WorkerCalendar({ workerName, attendanceRecords }: WorkerCalendar
 
   return (
     <Card className="w-full">
-      <CardHeader className="pb-3">
-        <CardTitle className="text-sm font-medium flex items-center justify-between">
+      <CardHeader className="pb-2">
+        <CardTitle className="text-xs font-medium flex items-center justify-between">
           <span className="truncate">{workerName}</span>
           <Badge variant="outline" className="text-xs">
-            {attendanceRecords.filter(r => r.workerName === workerName).length} days
+            {attendanceRecords.filter(r => r.workerName === workerName).length}
           </Badge>
         </CardTitle>
       </CardHeader>
       <CardContent className="pt-0">
-        <div className="space-y-2">
+        <div className="space-y-1">
           {/* Calendar header */}
-          <div className="grid grid-cols-7 gap-1 text-center text-xs font-medium text-gray-500 mb-2">
+          <div className="grid grid-cols-7 gap-0.5 text-center text-xs font-medium text-gray-500 mb-1">
             {weekDays.map((day, index) => (
-              <div key={`${workerName}-weekday-${index}`} className="p-1">
+              <div key={`${workerName}-weekday-${index}`} className="p-0.5">
                 {day}
               </div>
             ))}
           </div>
-          
+
           {/* Calendar grid */}
-          <div className="grid grid-cols-7 gap-1">
+          <div className="grid grid-cols-7 gap-0.5">
             {calendarDays.map((date, index) => {
               const attendance = getAttendanceForDate(date);
               const dayStatus = getDayStatus(date, attendance);
+              const dayContent = getDayContent(date, attendance);
 
               return (
                 <div
                   key={`${workerName}-${date.getFullYear()}-${date.getMonth()}-${date.getDate()}-${index}`}
                   className={`
-                    aspect-square flex items-center justify-center text-xs rounded border
+                    w-6 h-6 flex items-center justify-center rounded border
                     transition-all duration-150 cursor-pointer
                     ${dayStatus}
                   `}
                   title={attendance ?
-                    `${date.toLocaleDateString()}: ${attendance.totalManhours}h work${attendance.otHours > 0 ? `, ${attendance.otHours}h OT` : ''}` :
-                    date.toLocaleDateString()
+                    `${date.toLocaleDateString()}: Present${attendance.otHours > 0 ? ` + ${attendance.otHours}h OT` : ''}` :
+                    `${date.toLocaleDateString()}: ${date.getDate() <= new Date().getDate() && date.getMonth() === new Date().getMonth() ? 'Absent' : 'Future'}`
                   }
                 >
-                  {date.getDate()}
+                  {dayContent}
                 </div>
               );
             })}
           </div>
-          
+
           {/* Legend */}
-          <div className="flex items-center justify-between text-xs text-gray-500 mt-3 pt-2 border-t">
-            <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 bg-green-100 border border-green-200 rounded"></div>
-              <span>Present</span>
+          <div className="flex items-center justify-between text-xs text-gray-500 mt-2 pt-1 border-t">
+            <div className="flex items-center space-x-1">
+              <div className="w-2 h-2 bg-green-500 rounded"></div>
+              <span>P</span>
             </div>
-            <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 bg-orange-100 border border-orange-200 rounded"></div>
-              <span>OT</span>
+            <div className="flex items-center space-x-1">
+              <div className="w-2 h-2 bg-red-500 rounded"></div>
+              <span>A</span>
             </div>
           </div>
         </div>
