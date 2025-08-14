@@ -608,7 +608,8 @@ export default function Index() {
                   </button>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  Use the search above to view individual worker attendance calendars
+                  Use the search above to view individual worker attendance
+                  calendars
                 </p>
               </CardContent>
             </Card>
