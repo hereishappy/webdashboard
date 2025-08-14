@@ -24,11 +24,11 @@ export default {
           foreground: "hsl(var(--primary-foreground))",
         },
         chart: {
-          '1': "hsl(var(--chart-1))",
-          '2': "hsl(var(--chart-2))",
-          '3': "hsl(var(--chart-3))",
-          '4': "hsl(var(--chart-4))",
-          '5': "hsl(var(--chart-5))",
+          "1": "hsl(var(--chart-1))",
+          "2": "hsl(var(--chart-2))",
+          "3": "hsl(var(--chart-3))",
+          "4": "hsl(var(--chart-4))",
+          "5": "hsl(var(--chart-5))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -66,7 +66,7 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ["Inter", "system-ui", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",

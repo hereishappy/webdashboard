@@ -15,9 +15,15 @@ interface DataTableProps {
   maxRows?: number;
 }
 
-export function DataTable({ title, data, columns, className, maxRows = 10 }: DataTableProps) {
+export function DataTable({
+  title,
+  data,
+  columns,
+  className,
+  maxRows = 10,
+}: DataTableProps) {
   const displayData = maxRows ? data.slice(0, maxRows) : data;
-  
+
   return (
     <Card className={className}>
       <CardHeader>
@@ -29,7 +35,7 @@ export function DataTable({ title, data, columns, className, maxRows = 10 }: Dat
             <thead>
               <tr className="border-b">
                 {columns.map((column) => (
-                  <th 
+                  <th
                     key={column.key}
                     className="text-left p-2 font-medium text-muted-foreground"
                   >
@@ -40,26 +46,25 @@ export function DataTable({ title, data, columns, className, maxRows = 10 }: Dat
             </thead>
             <tbody>
               {displayData.map((row, index) => (
-                <tr 
+                <tr
                   key={index}
                   className={cn(
                     "border-b border-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800/50",
-                    "transition-colors duration-150"
+                    "transition-colors duration-150",
                   )}
                 >
                   {columns.map((column) => (
                     <td key={column.key} className="p-2">
-                      {column.render 
+                      {column.render
                         ? column.render(row[column.key], row)
-                        : row[column.key]
-                      }
+                        : row[column.key]}
                     </td>
                   ))}
                 </tr>
               ))}
             </tbody>
           </table>
-          
+
           {data.length > maxRows && (
             <div className="mt-3 text-center text-sm text-muted-foreground">
               Showing {maxRows} of {data.length} records

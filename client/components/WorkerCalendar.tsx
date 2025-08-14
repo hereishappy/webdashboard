@@ -15,7 +15,10 @@ interface WorkerCalendarProps {
   attendanceRecords: AttendanceRecord[];
 }
 
-export function WorkerCalendar({ workerName, attendanceRecords }: WorkerCalendarProps) {
+export function WorkerCalendar({
+  workerName,
+  attendanceRecords,
+}: WorkerCalendarProps) {
   // Generate a simple calendar for the current month
   const generateCalendarDays = () => {
     const today = new Date();
@@ -23,31 +26,35 @@ export function WorkerCalendar({ workerName, attendanceRecords }: WorkerCalendar
     const currentYear = today.getFullYear();
     const firstDay = new Date(currentYear, currentMonth, 1);
     const lastDay = new Date(currentYear, currentMonth + 1, 0);
-    
+
     const days = [];
     const startDate = new Date(firstDay);
     startDate.setDate(startDate.getDate() - firstDay.getDay()); // Start from Sunday
-    
+
     // Generate 5 weeks (35 days) to cover the month
     for (let i = 0; i < 35; i++) {
       const currentDate = new Date(startDate);
       currentDate.setDate(startDate.getDate() + i);
       days.push(currentDate);
     }
-    
+
     return days;
   };
 
   const getAttendanceForDate = (date: Date) => {
-    const dateStr = date.toLocaleDateString('en-GB', { 
-      day: 'numeric',
-      month: 'short',
-      year: 'numeric'
-    }).replace(/\s/g, '-');
-    
-    return attendanceRecords.find(record => 
-      record.workerName === workerName && 
-      (record.date === dateStr || record.date.includes(date.getDate().toString()))
+    const dateStr = date
+      .toLocaleDateString("en-GB", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+      })
+      .replace(/\s/g, "-");
+
+    return attendanceRecords.find(
+      (record) =>
+        record.workerName === workerName &&
+        (record.date === dateStr ||
+          record.date.includes(date.getDate().toString())),
     );
   };
 
@@ -58,22 +65,22 @@ export function WorkerCalendar({ workerName, attendanceRecords }: WorkerCalendar
     const currentMonth = today.getMonth();
     const dateMonth = date.getMonth();
 
-    if (isPastMonth) return 'text-gray-300 text-xs';
-    if (isToday) return 'bg-primary text-primary-foreground font-bold text-xs';
+    if (isPastMonth) return "text-gray-300 text-xs";
+    if (isToday) return "bg-primary text-primary-foreground font-bold text-xs";
 
     // For current month working days, check if present or absent
     if (dateMonth === currentMonth && date.getDate() <= today.getDate()) {
       if (attendance) {
         // Present
-        return 'bg-green-500 text-white font-medium text-xs';
+        return "bg-green-500 text-white font-medium text-xs";
       } else {
         // Absent (red)
-        return 'bg-red-500 text-white font-medium text-xs';
+        return "bg-red-500 text-white font-medium text-xs";
       }
     }
 
     // Future dates or other months
-    return 'text-gray-400 hover:bg-gray-50 text-xs';
+    return "text-gray-400 hover:bg-gray-50 text-xs";
   };
 
   const getDayContent = (date: Date, attendance?: AttendanceRecord) => {
@@ -84,7 +91,7 @@ export function WorkerCalendar({ workerName, attendanceRecords }: WorkerCalendar
   };
 
   const calendarDays = generateCalendarDays();
-  const weekDays = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+  const weekDays = ["S", "M", "T", "W", "T", "F", "S"];
 
   return (
     <Card className="w-full">
@@ -92,7 +99,10 @@ export function WorkerCalendar({ workerName, attendanceRecords }: WorkerCalendar
         <CardTitle className="text-xs font-medium flex items-center justify-between">
           <span className="truncate">{workerName}</span>
           <Badge variant="outline" className="text-xs">
-            {attendanceRecords.filter(r => r.workerName === workerName).length}
+            {
+              attendanceRecords.filter((r) => r.workerName === workerName)
+                .length
+            }
           </Badge>
         </CardTitle>
       </CardHeader>
@@ -122,9 +132,10 @@ export function WorkerCalendar({ workerName, attendanceRecords }: WorkerCalendar
                     transition-all duration-150 cursor-pointer
                     ${dayStatus}
                   `}
-                  title={attendance ?
-                    `${date.toLocaleDateString()}: Present${attendance.otHours > 0 ? ` + ${attendance.otHours}h OT` : ''}` :
-                    `${date.toLocaleDateString()}: ${date.getDate() <= new Date().getDate() && date.getMonth() === new Date().getMonth() ? 'Absent' : 'Future'}`
+                  title={
+                    attendance
+                      ? `${date.toLocaleDateString()}: Present${attendance.otHours > 0 ? ` + ${attendance.otHours}h OT` : ""}`
+                      : `${date.toLocaleDateString()}: ${date.getDate() <= new Date().getDate() && date.getMonth() === new Date().getMonth() ? "Absent" : "Future"}`
                   }
                 >
                   {dayContent}

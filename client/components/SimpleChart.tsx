@@ -13,9 +13,14 @@ interface SimpleChartProps {
   className?: string;
 }
 
-export function SimpleChart({ title, data, type = "bar", className }: SimpleChartProps) {
-  const maxValue = Math.max(...data.map(d => d.value));
-  
+export function SimpleChart({
+  title,
+  data,
+  type = "bar",
+  className,
+}: SimpleChartProps) {
+  const maxValue = Math.max(...data.map((d) => d.value));
+
   return (
     <Card className={className}>
       <CardHeader>
@@ -30,16 +35,19 @@ export function SimpleChart({ title, data, type = "bar", className }: SimpleChar
               </div>
               <div className="flex-1 flex items-center space-x-2">
                 <div className="flex-1 bg-gray-200 rounded-full h-2 dark:bg-gray-700">
-                  <div 
+                  <div
                     className="h-2 rounded-full transition-all duration-500 ease-out"
                     style={{
                       width: `${(item.value / maxValue) * 100}%`,
-                      backgroundColor: item.color || `hsl(var(--chart-${(index % 5) + 1}))`,
+                      backgroundColor:
+                        item.color || `hsl(var(--chart-${(index % 5) + 1}))`,
                     }}
                   />
                 </div>
                 <div className="w-12 text-sm font-mono text-right">
-                  {typeof item.value === 'number' ? item.value.toFixed(1) : item.value}
+                  {typeof item.value === "number"
+                    ? item.value.toFixed(1)
+                    : item.value}
                 </div>
               </div>
             </div>
