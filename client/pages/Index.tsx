@@ -552,6 +552,39 @@ export default function Index() {
         </div>
       </header>
 
+      {/* Site Performance News Headlines */}
+      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20 border-b">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">LIVE</span>
+            </div>
+            <div className="flex-1 overflow-hidden">
+              <div className="animate-scroll">
+                <div className="flex items-center space-x-8 text-sm">
+                  <span className="text-gray-600 dark:text-gray-400 whitespace-nowrap">
+                    🔥 <strong>Performance Alert:</strong> Productivity increased by 15% this month
+                  </span>
+                  <span className="text-gray-600 dark:text-gray-400 whitespace-nowrap">
+                    📊 <strong>Site Update:</strong> New attendance tracking system deployed successfully
+                  </span>
+                  <span className="text-gray-600 dark:text-gray-400 whitespace-nowrap">
+                    ⚡ <strong>System Status:</strong> All monitoring systems operational
+                  </span>
+                  <span className="text-gray-600 dark:text-gray-400 whitespace-nowrap">
+                    🎯 <strong>Achievement:</strong> Zero downtime maintained for 30 consecutive days
+                  </span>
+                  <span className="text-gray-600 dark:text-gray-400 whitespace-nowrap">
+                    📈 <strong>Milestone:</strong> 10,000+ manhours tracked successfully
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <main className="container mx-auto px-4 py-6 space-y-6">
         {/* Stats Overview */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
