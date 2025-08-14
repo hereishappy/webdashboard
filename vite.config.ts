@@ -5,7 +5,7 @@ import { createServer } from "./server";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: mode === 'production' ? '/webdashboard/' : '/',
+  base: mode === "production" ? "/webdashboard/" : "/",
   server: {
     host: "::",
     port: 8080,
