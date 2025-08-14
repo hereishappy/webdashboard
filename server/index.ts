@@ -19,6 +19,8 @@ export function createServer() {
   });
 
   app.get("/api/demo", handleDemo);
+  app.get("/api/csv/attendance", handleAttendanceCSV);
+  app.get("/api/csv/performance", handlePerformanceCSV);
 
   return app;
 }
