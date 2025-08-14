@@ -82,8 +82,8 @@ export function WorkerCalendar({ workerName, attendanceRecords }: WorkerCalendar
         <div className="space-y-2">
           {/* Calendar header */}
           <div className="grid grid-cols-7 gap-1 text-center text-xs font-medium text-gray-500 mb-2">
-            {weekDays.map(day => (
-              <div key={day} className="p-1">
+            {weekDays.map((day, index) => (
+              <div key={`${workerName}-weekday-${index}`} className="p-1">
                 {day}
               </div>
             ))}
