@@ -28,12 +28,47 @@ export default function Index() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Use mock data directly to avoid fetch errors
+    // Use mock data with more workers and varied attendance patterns
     const mockAttendance: AttendanceRecord[] = [
+      // AMAN KUMAR
       { date: '1-Aug-2025', supervisorName: 'MAHENDRA KUMAR', workerName: 'AMAN KUMAR', totalManhours: 8, otHours: 4, endShiftManhours: 12 },
+      { date: '5-Aug-2025', supervisorName: 'MAHENDRA KUMAR', workerName: 'AMAN KUMAR', totalManhours: 8, otHours: 0, endShiftManhours: 8 },
+      { date: '8-Aug-2025', supervisorName: 'MAHENDRA KUMAR', workerName: 'AMAN KUMAR', totalManhours: 8, otHours: 2, endShiftManhours: 10 },
+
+      // ATUL MAHADEO
       { date: '1-Aug-2025', supervisorName: 'MAHENDRA KUMAR', workerName: 'ATUL MAHADEO', totalManhours: 8, otHours: 4, endShiftManhours: 12 },
-      { date: '1-Aug-2025', supervisorName: 'HARKIRAT SINGH', workerName: 'DAULAT YADAV', totalManhours: 8, otHours: 0, endShiftManhours: 8 },
+      { date: '3-Aug-2025', supervisorName: 'MAHENDRA KUMAR', workerName: 'ATUL MAHADEO', totalManhours: 8, otHours: 0, endShiftManhours: 8 },
+      { date: '6-Aug-2025', supervisorName: 'MAHENDRA KUMAR', workerName: 'ATUL MAHADEO', totalManhours: 8, otHours: 3, endShiftManhours: 11 },
+
+      // DAULAT YADAV
+      { date: '2-Aug-2025', supervisorName: 'HARKIRAT SINGH', workerName: 'DAULAT YADAV', totalManhours: 8, otHours: 0, endShiftManhours: 8 },
+      { date: '4-Aug-2025', supervisorName: 'HARKIRAT SINGH', workerName: 'DAULAT YADAV', totalManhours: 8, otHours: 1, endShiftManhours: 9 },
+      { date: '7-Aug-2025', supervisorName: 'HARKIRAT SINGH', workerName: 'DAULAT YADAV', totalManhours: 8, otHours: 0, endShiftManhours: 8 },
+
+      // RAJESH KUMAR
       { date: '2-Aug-2025', supervisorName: 'PINTU SAH', workerName: 'RAJESH KUMAR', totalManhours: 8, otHours: 2, endShiftManhours: 10 },
+      { date: '5-Aug-2025', supervisorName: 'PINTU SAH', workerName: 'RAJESH KUMAR', totalManhours: 8, otHours: 0, endShiftManhours: 8 },
+      { date: '9-Aug-2025', supervisorName: 'PINTU SAH', workerName: 'RAJESH KUMAR', totalManhours: 8, otHours: 4, endShiftManhours: 12 },
+
+      // SURESH PATEL
+      { date: '1-Aug-2025', supervisorName: 'SUNIL CHAUHAN', workerName: 'SURESH PATEL', totalManhours: 8, otHours: 0, endShiftManhours: 8 },
+      { date: '4-Aug-2025', supervisorName: 'SUNIL CHAUHAN', workerName: 'SURESH PATEL', totalManhours: 8, otHours: 2, endShiftManhours: 10 },
+      { date: '8-Aug-2025', supervisorName: 'SUNIL CHAUHAN', workerName: 'SURESH PATEL', totalManhours: 8, otHours: 0, endShiftManhours: 8 },
+
+      // VIKASH SINGH
+      { date: '3-Aug-2025', supervisorName: 'MAHENDRA KUMAR', workerName: 'VIKASH SINGH', totalManhours: 8, otHours: 1, endShiftManhours: 9 },
+      { date: '6-Aug-2025', supervisorName: 'MAHENDRA KUMAR', workerName: 'VIKASH SINGH', totalManhours: 8, otHours: 0, endShiftManhours: 8 },
+      { date: '10-Aug-2025', supervisorName: 'MAHENDRA KUMAR', workerName: 'VIKASH SINGH', totalManhours: 8, otHours: 3, endShiftManhours: 11 },
+
+      // RAVI YADAV
+      { date: '2-Aug-2025', supervisorName: 'HARKIRAT SINGH', workerName: 'RAVI YADAV', totalManhours: 8, otHours: 0, endShiftManhours: 8 },
+      { date: '7-Aug-2025', supervisorName: 'HARKIRAT SINGH', workerName: 'RAVI YADAV', totalManhours: 8, otHours: 2, endShiftManhours: 10 },
+      { date: '11-Aug-2025', supervisorName: 'HARKIRAT SINGH', workerName: 'RAVI YADAV', totalManhours: 8, otHours: 0, endShiftManhours: 8 },
+
+      // MANOJ KUMAR
+      { date: '1-Aug-2025', supervisorName: 'PINTU SAH', workerName: 'MANOJ KUMAR', totalManhours: 8, otHours: 4, endShiftManhours: 12 },
+      { date: '5-Aug-2025', supervisorName: 'PINTU SAH', workerName: 'MANOJ KUMAR', totalManhours: 8, otHours: 0, endShiftManhours: 8 },
+      { date: '9-Aug-2025', supervisorName: 'PINTU SAH', workerName: 'MANOJ KUMAR', totalManhours: 8, otHours: 1, endShiftManhours: 9 },
     ];
 
     const mockPerformance: PerformanceRecord[] = [
