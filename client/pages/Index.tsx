@@ -593,21 +593,23 @@ export default function Index() {
             <Card>
               <CardHeader>
                 <CardTitle className="text-lg font-semibold">
-                  Worker Attendance Calendars
+                  Search Worker Attendance
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
-                  {Array.from(
-                    new Set(attendanceData.map((r) => r.workerName)),
-                  ).map((workerName) => (
-                    <WorkerCalendar
-                      key={workerName}
-                      workerName={workerName}
-                      attendanceRecords={attendanceData}
-                    />
-                  ))}
+                <div className="flex items-center space-x-2 mb-4">
+                  <input
+                    type="text"
+                    placeholder="Search worker by name..."
+                    className="flex-1 px-3 py-2 border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                  />
+                  <button className="px-4 py-2 bg-primary text-primary-foreground rounded-md text-sm hover:bg-primary/90">
+                    Search
+                  </button>
                 </div>
+                <p className="text-sm text-muted-foreground">
+                  Use the search above to view individual worker attendance calendars
+                </p>
               </CardContent>
             </Card>
           </div>
