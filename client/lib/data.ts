@@ -16,8 +16,8 @@ export interface PerformanceRecord {
   productivity: number;
 }
 
-const ATTENDANCE_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTRmYg3zmYTdR76pDZirRk3Q-jGChOHtKwW5sRhi9NmaOWjCCvMeGi_CzmtbEVRrVt_u4mgTQmyrjYB/pub?gid=1025965600&single=true&output=csv';
-const PERFORMANCE_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTRmYg3zmYTdR76pDZirRk3Q-jGChOHtKwW5sRhi9NmaOWjCCvMeGi_CzmtbEVRrVt_u4mgTQmyrjYB/pub?gid=1486071949&single=true&output=csv';
+const ATTENDANCE_CSV_URL = '/api/csv/attendance';
+const PERFORMANCE_CSV_URL = '/api/csv/performance';
 
 function parseCSV(csvText: string): string[][] {
   const lines = csvText.trim().split('\n');
