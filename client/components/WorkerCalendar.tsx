@@ -94,17 +94,17 @@ export function WorkerCalendar({ workerName, attendanceRecords }: WorkerCalendar
             {calendarDays.map((date, index) => {
               const attendance = getAttendanceForDate(date);
               const dayStatus = getDayStatus(date, attendance);
-              
+
               return (
                 <div
-                  key={index}
+                  key={`${workerName}-${date.getFullYear()}-${date.getMonth()}-${date.getDate()}-${index}`}
                   className={`
                     aspect-square flex items-center justify-center text-xs rounded border
                     transition-all duration-150 cursor-pointer
                     ${dayStatus}
                   `}
-                  title={attendance ? 
-                    `${date.toLocaleDateString()}: ${attendance.totalManhours}h work${attendance.otHours > 0 ? `, ${attendance.otHours}h OT` : ''}` : 
+                  title={attendance ?
+                    `${date.toLocaleDateString()}: ${attendance.totalManhours}h work${attendance.otHours > 0 ? `, ${attendance.otHours}h OT` : ''}` :
                     date.toLocaleDateString()
                   }
                 >
