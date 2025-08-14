@@ -564,19 +564,19 @@ export default function Index() {
               <div className="animate-scroll">
                 <div className="flex items-center space-x-8 text-sm">
                   <span className="text-gray-600 dark:text-gray-400 whitespace-nowrap">
-                    🔥 <strong>Performance Alert:</strong> Productivity increased by 15% this month
+                    🏗️ <strong>Site Performance - Erection:</strong> {performanceData.reduce((sum, p) => sum + p.erection, 0).toFixed(1)} units completed
                   </span>
                   <span className="text-gray-600 dark:text-gray-400 whitespace-nowrap">
-                    📊 <strong>Site Update:</strong> New attendance tracking system deployed successfully
+                    🔧 <strong>Site Performance - Dismantling:</strong> {performanceData.reduce((sum, p) => sum + p.dismantling, 0).toFixed(1)} units processed
                   </span>
                   <span className="text-gray-600 dark:text-gray-400 whitespace-nowrap">
-                    ⚡ <strong>System Status:</strong> All monitoring systems operational
+                    ⏱️ <strong>Site Performance - Total Manhours:</strong> {totalManhours}h workforce investment
                   </span>
                   <span className="text-gray-600 dark:text-gray-400 whitespace-nowrap">
-                    🎯 <strong>Achievement:</strong> Zero downtime maintained for 30 consecutive days
+                    📊 <strong>Site Performance - Productivity:</strong> {avgProductivity.toFixed(1)} average efficiency score
                   </span>
                   <span className="text-gray-600 dark:text-gray-400 whitespace-nowrap">
-                    📈 <strong>Milestone:</strong> 10,000+ manhours tracked successfully
+                    🎯 <strong>Site Performance - Top Achievement:</strong> {topPerformer.supName} leading with {topPerformer.productivity} score
                   </span>
                 </div>
               </div>
