@@ -558,25 +558,39 @@ export default function Index() {
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-2">
               <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">LIVE</span>
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                LIVE
+              </span>
             </div>
             <div className="flex-1 overflow-hidden">
               <div className="animate-scroll">
                 <div className="flex items-center space-x-8 text-sm">
                   <span className="text-gray-600 dark:text-gray-400 whitespace-nowrap">
-                    🏗️ <strong>Site Performance - Erection:</strong> {performanceData.reduce((sum, p) => sum + p.erection, 0).toFixed(1)} units completed
+                    🏗️ <strong>Site Performance - Erection:</strong>{" "}
+                    {performanceData
+                      .reduce((sum, p) => sum + p.erection, 0)
+                      .toFixed(1)}{" "}
+                    units completed
                   </span>
                   <span className="text-gray-600 dark:text-gray-400 whitespace-nowrap">
-                    🔧 <strong>Site Performance - Dismantling:</strong> {performanceData.reduce((sum, p) => sum + p.dismantling, 0).toFixed(1)} units processed
+                    🔧 <strong>Site Performance - Dismantling:</strong>{" "}
+                    {performanceData
+                      .reduce((sum, p) => sum + p.dismantling, 0)
+                      .toFixed(1)}{" "}
+                    units processed
                   </span>
                   <span className="text-gray-600 dark:text-gray-400 whitespace-nowrap">
-                    ⏱️ <strong>Site Performance - Total Manhours:</strong> {totalManhours}h workforce investment
+                    ⏱️ <strong>Site Performance - Total Manhours:</strong>{" "}
+                    {totalManhours}h workforce investment
                   </span>
                   <span className="text-gray-600 dark:text-gray-400 whitespace-nowrap">
-                    📊 <strong>Site Performance - Productivity:</strong> {avgProductivity.toFixed(1)} average efficiency score
+                    📊 <strong>Site Performance - Productivity:</strong>{" "}
+                    {avgProductivity.toFixed(1)} average efficiency score
                   </span>
                   <span className="text-gray-600 dark:text-gray-400 whitespace-nowrap">
-                    🎯 <strong>Site Performance - Top Achievement:</strong> {topPerformer.supName} leading with {topPerformer.productivity} score
+                    🎯 <strong>Site Performance - Top Achievement:</strong>{" "}
+                    {topPerformer.supName} leading with{" "}
+                    {topPerformer.productivity} score
                   </span>
                 </div>
               </div>
