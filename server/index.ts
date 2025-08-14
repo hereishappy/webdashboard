@@ -2,6 +2,7 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
+import { handleAttendanceCSV, handlePerformanceCSV } from "./routes/csv-proxy";
 
 export function createServer() {
   const app = express();
