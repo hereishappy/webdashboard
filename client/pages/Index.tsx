@@ -87,7 +87,7 @@ export default function Index() {
 
   // Calculate stats
   const totalWorkers = new Set(attendanceData.map(r => r.workerName)).size;
-  const totalManhours = attendanceData.reduce((sum, r) => sum + r.totalManhours, 0);
+  const totalManhours = attendanceData.reduce((sum, r) => sum + r.endShiftManhours, 0); // Include OT hours
   const totalOTHours = attendanceData.reduce((sum, r) => sum + r.otHours, 0);
   const avgProductivity = performanceData.reduce((sum, r) => sum + r.productivity, 0) / Math.max(performanceData.length, 1);
   const topPerformer = performanceData.reduce((top, current) => 
