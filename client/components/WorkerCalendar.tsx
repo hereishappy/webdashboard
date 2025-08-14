@@ -55,14 +55,32 @@ export function WorkerCalendar({ workerName, attendanceRecords }: WorkerCalendar
     const today = new Date();
     const isToday = date.toDateString() === today.toDateString();
     const isPastMonth = date.getMonth() !== today.getMonth();
-    
-    if (isPastMonth) return 'text-gray-300';
-    if (isToday) return 'bg-primary text-primary-foreground font-bold';
-    if (attendance) {
-      if (attendance.otHours > 0) return 'bg-orange-100 text-orange-800 border-orange-200';
-      return 'bg-green-100 text-green-800 border-green-200';
+    const currentMonth = today.getMonth();
+    const dateMonth = date.getMonth();
+
+    if (isPastMonth) return 'text-gray-300 text-xs';
+    if (isToday) return 'bg-primary text-primary-foreground font-bold text-xs';
+
+    // For current month working days, check if present or absent
+    if (dateMonth === currentMonth && date.getDate() <= today.getDate()) {
+      if (attendance) {
+        // Present
+        return 'bg-green-500 text-white font-medium text-xs';
+      } else {
+        // Absent (red)
+        return 'bg-red-500 text-white font-medium text-xs';
+      }
     }
-    return 'text-gray-600 hover:bg-gray-50';
+
+    // Future dates or other months
+    return 'text-gray-400 hover:bg-gray-50 text-xs';
+  };
+
+  const getDayContent = (date: Date, attendance?: AttendanceRecord) => {
+    if (attendance && attendance.otHours > 0) {
+      return `P${attendance.otHours}`;
+    }
+    return date.getDate();
   };
 
   const calendarDays = generateCalendarDays();
