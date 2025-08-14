@@ -289,7 +289,7 @@ export default function Index() {
           <StatCard
             title="Total Manhours"
             value={`${totalManhours}h`}
-            subtitle="This period"
+            subtitle="All time"
             icon={<Clock className="h-4 w-4" />}
           />
           <StatCard
